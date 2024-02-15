@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    author: Sydney Dean
+    date: 13 February 2024
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
+    <!-- vertical layout for controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/facemaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Face Maker"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <!-- red -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/red_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="Red" />
+
+            <SeekBar
+                android:id="@+id/red_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:max="255" />
+
+        </LinearLayout>
+
+        <!-- green -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/green_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="Green" />
+
+            <SeekBar
+                android:id="@+id/green_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:max="255" />
+
+        </LinearLayout>
+
+        <!-- blue -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/blue_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="Blue" />
+
+            <SeekBar
+                android:id="@+id/blue_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:max="255" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Head"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <!-- External Citation
+              Date: 13 February 2024
+              Problem: how to use/group radio buttons
+              https://developer.android.com/develop/ui/views/components/
+              radiobutton
+              Solution: copied and edited example code
+        -->
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/hair"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hair" />
+
+            <RadioButton
+                android:id="@+id/eyes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Eyes" />
+
+            <RadioButton
+                android:id="@+id/skin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Skin" />
+        </RadioGroup>
+
+        <!-- linear layout for menu bottom half -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hairstyle_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Hairstyle"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <!-- External Citation
+                   Date: 13 February 2024
+                   Problem: add options to spinner through xml
+                   Resource:
+                   https://stackoverflow.com/questions/5241660/how-to-add-items-to
+                   -a-spinner-in-android
+                   Solution: used second answer from the top (by maxivis I think)
+            -->
+            <Spinner
+                android:id="@+id/hairstyles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:entries="@array/hairstyle" />
+
+            <Button
+                android:id="@+id/random_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Random Face"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

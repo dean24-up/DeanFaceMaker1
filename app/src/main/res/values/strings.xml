@@ -1,0 +1,19 @@
+<!--External Citation
+    Date: 13 February 2024
+    Problem: wanted to know how to add options to spinner
+    Resource:
+        https://developer.android.com/develop/ui/views/components/spinner#java
+    Solution: used spinner resources code as reference
+-->
+<resources>
+    <string name="app_name">DeanFaceMaker1</string>
+    <string-array name = "hairstyle">
+        <item>Long and Straight</item>
+        <item>Long and Curly</item>
+        <item>Short and Straight</item>
+        <item>Short and Curly</item>
+    </string-array>
+</resources>
+
+
+
