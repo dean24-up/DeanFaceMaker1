@@ -182,7 +182,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:entries="@array/hairstyle" />
+                android:entries="@array/hairstyle"
+                />
 
             <Button
                 android:id="@+id/random_face"

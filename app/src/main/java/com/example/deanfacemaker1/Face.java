@@ -25,12 +25,13 @@ import java.util.Random;
     Solution: referenced how classes were set up
  */
 public class Face extends SurfaceView {
-    private int skinColor;
-    private int eyeColor;
-    private int hairColor;
-    private int hairStyle;
+    public int skinColor;
+    public int eyeColor;
+    public int hairColor;
+    public int hairStyle;
 
     private Paint facePaint = new Paint();
+    private Paint hairPaint = new Paint();
 
     /**
      * Constructor
@@ -39,8 +40,12 @@ public class Face extends SurfaceView {
         super(context, attrs);
         setWillNotDraw(false);
         randomize();
-        facePaint.setColor(skinColor); //pink as a placeholder
+        facePaint.setColor(skinColor);
         facePaint.setStyle(Paint.Style.FILL);
+
+        hairPaint.setColor(hairColor);
+        hairPaint.setStyle(Paint.Style.FILL);
+
         setBackgroundColor(Color.WHITE);
 
     }
@@ -53,6 +58,7 @@ public class Face extends SurfaceView {
         //TOFIX add in part b
         //draw skin/face
         canvas.drawCircle(600.0f, 550.0f, 350.0f, facePaint);
+        drawHair(canvas);
         //call draw eye and draw hair
 
     }
@@ -70,10 +76,57 @@ public class Face extends SurfaceView {
      * draws hair depending on choice (curly, straight, long, or short)
      */
     public void drawHair(Canvas canvas) {
-        //TOFIX add in part b
-        //if hair is curly, use a circle
-        //if hair is straight, use a rectangle
-        //draw base hair piece over and over depending on length
+
+        //TODO can probably go back and simplify drawing proceses later, but it works
+        //long and straight
+        if (hairStyle == 0){
+            //top of hair
+            canvas.drawRect(300.0f, 200.0f, 900.0f, 300.0f, hairPaint);
+
+            //sides
+            canvas.drawRect(250.0f, 200.0f, 350.0f, 1000.0f, hairPaint);
+            canvas.drawRect(850.0f, 200.0f, 950.0f, 1000.0f, hairPaint);
+        }
+        //short and straight
+        if (hairStyle == 2) {
+            //top of hair
+            canvas.drawRect(300.0f, 200.0f, 900.0f, 300.0f, hairPaint);
+
+            //sides
+            canvas.drawRect(250.0f, 200.0f, 350.0f, 500.0f, hairPaint);
+            canvas.drawRect(850.0f, 200.0f, 950.0f, 500.0f, hairPaint);
+
+        }
+
+        //for curly hairstyles
+        if (hairStyle == 1 || hairStyle == 3){
+            //top of hair (line of 4 ovals)
+            for (int i = 0; i < 5; i ++){
+                int left = 275 + 125*i;
+                //150 is the width of the oval
+                int right = left + 150;
+                canvas.drawOval(left , 175.0f, right, 300.0f, hairPaint);
+            }
+
+            //determine how long sides of hair should be
+            int sides_rows;
+            if (hairStyle == 1) {
+                sides_rows = 7; //how many ovals top to bottom
+            }
+            else{
+                sides_rows = 2;
+            }
+
+            //draw the sides of hair
+            for (int i = 0; i < sides_rows; i ++){
+                int top = 275 + 100*i;
+                int bottom = top + 125;
+                canvas.drawOval(225 , top, 375, bottom, hairPaint);
+                canvas.drawOval(825 , top, 975, bottom, hairPaint);
+
+            }
+        }
+
     }
 
     /*

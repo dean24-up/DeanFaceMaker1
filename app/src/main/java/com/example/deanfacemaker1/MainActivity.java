@@ -20,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Face faceview = findViewById(R.id.surfaceView);
+        FaceController facecontroller = new FaceController(faceview);
+
+        Spinner spinner = findViewById(R.id.hairstyles);
+        spinner.setOnItemSelectedListener(facecontroller);
+
     }
 
 }
