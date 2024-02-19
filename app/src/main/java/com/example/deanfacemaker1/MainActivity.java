@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +29,19 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.hairstyles);
         spinner.setOnItemSelectedListener(facecontroller);
 
+        /* External Citation
+         Date 19 February 2024
+        Problem: Needed to know how to reference RadioGroup
+        Resources:
+        https://stackoverflow.com/questions/6780981/android-radiogroup-how-to-config
+        ure-the-event-listener
+        Solution: copied code
+        */
+        RadioGroup faceparts = (RadioGroup) findViewById(R.id.faceparts);
+        faceparts.setOnCheckedChangeListener(facecontroller);
+        //get the radiobutton in the group that is checked
+        //TODO delete this????
+        RadioButton checkedPart = (RadioButton)faceparts.findViewById(faceparts.getCheckedRadioButtonId());
     }
 
 }

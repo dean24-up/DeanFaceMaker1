@@ -32,6 +32,8 @@ public class Face extends SurfaceView {
 
     private Paint facePaint = new Paint();
     private Paint hairPaint = new Paint();
+    private Paint eyePaint = new Paint();
+    private Paint white = new Paint();
 
     /**
      * Constructor
@@ -46,6 +48,12 @@ public class Face extends SurfaceView {
         hairPaint.setColor(hairColor);
         hairPaint.setStyle(Paint.Style.FILL);
 
+        eyePaint.setColor(eyeColor);
+        eyePaint.setStyle(Paint.Style.FILL);
+
+        white.setColor(Color.WHITE);
+        white.setStyle(Paint.Style.FILL);
+
         setBackgroundColor(Color.WHITE);
 
     }
@@ -59,15 +67,20 @@ public class Face extends SurfaceView {
         //draw skin/face
         canvas.drawCircle(600.0f, 550.0f, 350.0f, facePaint);
         drawHair(canvas);
-        //call draw eye and draw hair
+        drawEyes(canvas);
 
     }
 
     /**
-     * drawEye
-     * draws one eye on the canvas
+     * drawEyes
+     * draws two eyes on the canvas
      */
-    public void drawEye(Canvas canvas) {
+    public void drawEyes(Canvas canvas) {
+        canvas.drawCircle(475.0f, 500.0f, 75.0f, white);
+        canvas.drawCircle(725.0f, 500.0f, 75.0f, white);
+
+        canvas.drawCircle(480.0f, 500.0f, 50.0f, eyePaint);
+        canvas.drawCircle(720.0f, 500.0f, 50.0f, eyePaint);
         //TOFIX add in part b
     }
 
