@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Face faceview = findViewById(R.id.surfaceView);
-        FaceController facecontroller = new FaceController(faceview);
+        FaceController facecontroller = new FaceController(faceview, this);
 
         Spinner spinner = findViewById(R.id.hairstyles);
         spinner.setOnItemSelectedListener(facecontroller);
@@ -39,10 +40,21 @@ public class MainActivity extends AppCompatActivity {
         */
         RadioGroup faceparts = (RadioGroup) findViewById(R.id.faceparts);
         faceparts.setOnCheckedChangeListener(facecontroller);
-        //get the radiobutton in the group that is checked
-        //TODO delete this????
-        RadioButton checkedPart = (RadioButton)faceparts.findViewById(faceparts.getCheckedRadioButtonId());
+
+
+        //Seekbars
+        SeekBar redBar= (SeekBar)findViewById(R.id.red_slider);
+        redBar.setOnSeekBarChangeListener(facecontroller);
+
+        SeekBar greenBar= (SeekBar)findViewById(R.id.green_slider);
+        greenBar.setOnSeekBarChangeListener(facecontroller);
+
+        SeekBar blueBar= (SeekBar)findViewById(R.id.blue_slider);
+        blueBar.setOnSeekBarChangeListener(facecontroller);
+
     }
+
+
 
 }
 

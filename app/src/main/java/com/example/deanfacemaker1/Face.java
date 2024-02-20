@@ -25,15 +25,17 @@ import java.util.Random;
     Solution: referenced how classes were set up
  */
 public class Face extends SurfaceView {
+
+    //TODO is it ok if all these are public? or is that a problem
     public int skinColor;
     public int eyeColor;
     public int hairColor;
     public int hairStyle;
 
-    private Paint facePaint = new Paint();
-    private Paint hairPaint = new Paint();
-    private Paint eyePaint = new Paint();
-    private Paint white = new Paint();
+    public Paint facePaint = new Paint();
+    public Paint hairPaint = new Paint();
+    public Paint eyePaint = new Paint();
+    public Paint white = new Paint();
 
     /**
      * Constructor
