@@ -3,9 +3,8 @@
  *
  * @author Sydney Dean
  * @date 13 February 2024
- * Will draw the face on the canvas (in Part b)
+ * Draws the face on the canvas
  */
-
 package com.example.deanfacemaker1;
 
 import android.content.Context;
@@ -13,6 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceView;
 
 import java.util.Random;
@@ -25,8 +25,6 @@ import java.util.Random;
     Solution: referenced how classes were set up
  */
 public class Face extends SurfaceView {
-
-    //TODO is it ok if all these are public? or is that a problem
     public int skinColor;
     public int eyeColor;
     public int hairColor;
@@ -39,6 +37,7 @@ public class Face extends SurfaceView {
 
     /**
      * Constructor
+     * Sets all paint variables
      */
     public Face(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -62,10 +61,10 @@ public class Face extends SurfaceView {
 
     /**
      * onDraw
+     * @param canvas
      * draws the face on the canvas
      */
     public void onDraw(Canvas canvas) {
-        //TOFIX add in part b
         //draw skin/face
         canvas.drawCircle(600.0f, 550.0f, 350.0f, facePaint);
         drawHair(canvas);
@@ -75,6 +74,7 @@ public class Face extends SurfaceView {
 
     /**
      * drawEyes
+     * @param canvas
      * draws two eyes on the canvas
      */
     public void drawEyes(Canvas canvas) {
@@ -88,13 +88,13 @@ public class Face extends SurfaceView {
 
     /**
      * drawHair
+     * @param canvas
      * draws hair depending on choice (curly, straight, long, or short)
      */
     public void drawHair(Canvas canvas) {
 
-        //TODO can probably go back and simplify drawing proceses later, but it works
         //long and straight
-        if (hairStyle == 0){
+        if (this.hairStyle == 0){
             //top of hair
             canvas.drawRect(300.0f, 200.0f, 900.0f, 300.0f, hairPaint);
 
@@ -103,18 +103,17 @@ public class Face extends SurfaceView {
             canvas.drawRect(850.0f, 200.0f, 950.0f, 1000.0f, hairPaint);
         }
         //short and straight
-        if (hairStyle == 2) {
+        if (this.hairStyle == 2) {
             //top of hair
             canvas.drawRect(300.0f, 200.0f, 900.0f, 300.0f, hairPaint);
 
             //sides
             canvas.drawRect(250.0f, 200.0f, 350.0f, 500.0f, hairPaint);
             canvas.drawRect(850.0f, 200.0f, 950.0f, 500.0f, hairPaint);
-
         }
 
         //for curly hairstyles
-        if (hairStyle == 1 || hairStyle == 3){
+        if (this.hairStyle == 1 || this.hairStyle == 3){
             //top of hair (line of 4 ovals)
             for (int i = 0; i < 5; i ++){
                 int left = 275 + 125*i;
@@ -125,7 +124,7 @@ public class Face extends SurfaceView {
 
             //determine how long sides of hair should be
             int sides_rows;
-            if (hairStyle == 1) {
+            if (this.hairStyle == 1) {
                 sides_rows = 7; //how many ovals top to bottom
             }
             else{
@@ -138,7 +137,6 @@ public class Face extends SurfaceView {
                 int bottom = top + 125;
                 canvas.drawOval(225 , top, 375, bottom, hairPaint);
                 canvas.drawOval(825 , top, 975, bottom, hairPaint);
-
             }
         }
 
@@ -173,10 +171,18 @@ public class Face extends SurfaceView {
         */
         this.skinColor = Color.argb(255, rand.nextInt(256), rand.nextInt(256),
                 rand.nextInt(256));
+        facePaint.setColor(skinColor);
+
         this.eyeColor = Color.argb(255, rand.nextInt(256), rand.nextInt(256),
                 rand.nextInt(256));
+        eyePaint.setColor(eyeColor);
+
         this.hairColor = Color.argb(255, rand.nextInt(256), rand.nextInt(256),
                 rand.nextInt(256));
+        hairPaint.setColor(hairColor);
+
         this.hairStyle = rand.nextInt(4);
+        Log.d("face", "hairstyle: " + this.hairStyle);
     }
+
 }

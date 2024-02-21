@@ -2,7 +2,7 @@
  * MainActivity class
  * @author Sydney Dean
  * @date 13 February 2024
- * Doesn't do much at the moment, this is the default
+ * Sets up listener/view relationships
  */
 package com.example.deanfacemaker1;
 
@@ -10,8 +10,10 @@ import static android.R.layout.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -20,6 +22,10 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity {
 
     @Override
+    /**
+     * onCreate
+     * sets up listener and view relationships
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -38,23 +44,25 @@ public class MainActivity extends AppCompatActivity {
         ure-the-event-listener
         Solution: copied code
         */
-        RadioGroup faceparts = (RadioGroup) findViewById(R.id.faceparts);
+        RadioGroup faceparts = findViewById(R.id.faceparts);
         faceparts.setOnCheckedChangeListener(facecontroller);
-
+        faceparts.check(R.id.hair); //check hair by default
 
         //Seekbars
-        SeekBar redBar= (SeekBar)findViewById(R.id.red_slider);
+        SeekBar redBar= findViewById(R.id.red_slider);
         redBar.setOnSeekBarChangeListener(facecontroller);
 
-        SeekBar greenBar= (SeekBar)findViewById(R.id.green_slider);
+        SeekBar greenBar= findViewById(R.id.green_slider);
         greenBar.setOnSeekBarChangeListener(facecontroller);
 
-        SeekBar blueBar= (SeekBar)findViewById(R.id.blue_slider);
+        SeekBar blueBar= findViewById(R.id.blue_slider);
         blueBar.setOnSeekBarChangeListener(facecontroller);
 
+        //Random Button
+        Button randomFace = findViewById(R.id.random_face);
+        randomFace.setOnClickListener(facecontroller);
+
     }
-
-
 
 }
 
